@@ -1,25 +1,35 @@
 package Level3Exercise1;
+import Level3Exercise1.Comparators.ComparatorDNIAsc;
+import Level3Exercise1.Comparators.ComparatorNameAsc;
+import Level3Exercise1.Comparators.ComparatorSurnamesAsc;
 import Level3Exercise1.Exceptions.CommaFieldException;
 import Level3Exercise1.Exceptions.EmptyException;
+import Level3Exercise1.Exceptions.MaxLengthException;
 
+import java.util.List;
+
+/**
+ * CLass that implements the base of the program
+ */
 public class Program {
     ConsoleUI consoleUI;
-    Boolean checkdni;
     FilesAccess filesAccess;
     public Program()
     {
         consoleUI = new ConsoleUI();
-        checkdni = false;
         filesAccess = new FilesAccess("persones.csv");
     }
 
+    /**
+     * Start the app. Shows menu and execute option
+     */
     public void start()
     {
         int option=10;
         do {
             try
             {
-                option = consoleUI.showMenu(checkdni);
+                option = consoleUI.showMenu();
                 executeOption(option);
             }
             catch(Exception ex)
@@ -29,8 +39,13 @@ public class Program {
         } while(option!=0);
     }
 
+    /**
+     * Execute options of the menu
+     * @param option
+     */
     private void executeOption(int option)
     {
+        List<Person> persons;
         try
         {
             switch(option) {
@@ -38,18 +53,36 @@ public class Program {
                     insertPerson();
                     break;
                 case 2:
+                    persons = filesAccess.readPersons();
+                    persons.sort(new ComparatorNameAsc());
+                    consoleUI.showPersons(persons);
                     break;
                 case 3:
+                    persons = filesAccess.readPersons();
+                    persons.sort(new ComparatorNameAsc());
+                    persons = persons.reversed();
+                    consoleUI.showPersons(persons);
                     break;
                 case 4:
+                    persons = filesAccess.readPersons();
+                    persons.sort(new ComparatorSurnamesAsc());
+                    consoleUI.showPersons(persons);
                     break;
                 case 5:
+                    persons = filesAccess.readPersons();
+                    persons.sort(new ComparatorSurnamesAsc());
+                    persons = persons.reversed();
+                    consoleUI.showPersons(persons);
                     break;
                 case 6:
+                    persons = filesAccess.readPersons();
+                    consoleUI.showPersons(persons);
                     break;
                 case 7:
-                    break;
-                case 8:
+                    persons = filesAccess.readPersons();
+                    persons.sort(new ComparatorDNIAsc());
+                    persons = persons.reversed();
+                    consoleUI.showPersons(persons);
                     break;
             }
         }
@@ -58,6 +91,10 @@ public class Program {
         }
     }
 
+    /**
+     * Insert a person
+     * @throws Exception
+     */
     private void insertPerson() throws Exception {
         Person person = consoleUI.getPersonData();
         if(person.getName().isEmpty()||person.getSurnames().isEmpty()||person.getDni().isEmpty())
@@ -68,10 +105,14 @@ public class Program {
         {
             throw new CommaFieldException();
         }
-        else
+        else if(person.getName().length()<=Person.maxNamelength && person.getSurnames().length()<=Person.maxSurnamesLength && person.getDni().length()<=Person.maxDniLength)
         {
             filesAccess.addPerson(person);
             consoleUI.personAddedMessage();
+        }
+        else
+        {
+            throw new MaxLengthException();
         }
     }
 }

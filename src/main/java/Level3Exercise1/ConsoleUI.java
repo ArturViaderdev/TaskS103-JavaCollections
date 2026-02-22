@@ -2,15 +2,24 @@ package Level3Exercise1;
 
 import Level3Exercise1.Exceptions.IncorrectOptionException;
 
+import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Class that interacts with the user by console
+ */
 public class ConsoleUI {
     public ConsoleUI()
     {
 
     }
 
-    public int showMenu(boolean checkdni) throws Exception
+    /**
+     * Shows the menu and gets the option selected by the user
+     * @return
+     * @throws Exception
+     */
+    public int showMenu() throws Exception
     {
         System.out.println("1 - Introduir persona");
         System.out.println("2 - Mostrar persones ordenades per nom (A-Z)");
@@ -19,19 +28,11 @@ public class ConsoleUI {
         System.out.println("5 - Mostrar persones ordenades per cognoms (Z-A)");
         System.out.println("6 - Mostrar persones ordenades per DNI (1-9)");
         System.out.println("7 - Mostrar persones ordenades per DNI (9-1)");
-        if(!checkdni)
-        {
-            System.out.println("8 - Activar comprovació de DNI al afegir. Actualment desactivada.");
-        }
-        else
-        {
-            System.out.println("8 - Desactivar comprovació de DNI al afegir. Actualment activada.");
-        }
         System.out.println("0 - Sortir");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Introdueix una opció.");
         int opcio = scanner.nextInt();
-        if(opcio>=0 && opcio<=8)
+        if(opcio>=0 && opcio<=7)
         {
             return opcio;
         }
@@ -46,6 +47,10 @@ public class ConsoleUI {
         System.out.println("Opció incorrecta.");
     }
 
+    /**
+     * The user introduces the data of a person
+     * @return
+     */
     public Person getPersonData()
     {
         Scanner scanner = new Scanner(System.in);
@@ -62,5 +67,18 @@ public class ConsoleUI {
     public void personAddedMessage()
     {
         System.out.println("Persona afegida al csv.");
+    }
+
+    /**
+     * Shows the list in the console
+     * @param persons
+     */
+    public void showPersons(List<Person> persons)
+    {
+        System.out.println("___Nom____ ______Cognoms_______ ___DNI___");
+        for(Person person:persons)
+        {
+            System.out.println(person.toString());
+        }
     }
 }

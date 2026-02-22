@@ -4,6 +4,9 @@ public class Person {
     private String name;
     private String surnames;
     private String dni;
+    public static int maxNamelength = 10;
+    public static int maxSurnamesLength=20;
+    public static int maxDniLength = 9;
 
     public Person(String name, String surnames, String dni)
     {
@@ -29,7 +32,30 @@ public class Person {
 
     @Override
     public String toString() {
-        return name + " " + surnames + " " + dni;
+        String namespaces="";
+        String surnamespaces="";
+        int cont;
+        namespaces = generatespaces(name,maxNamelength);
+        surnamespaces = generatespaces(surnames,maxSurnamesLength);
+        return name + namespaces +  " " + surnames + surnamespaces + " " + dni;
+    }
+
+    /**
+     * Generate the empty spaces for the console output columns used by toString
+     * @param text
+     * @param length
+     * @return
+     */
+    private String generatespaces(String text,int length)
+    {
+        int cont = text.length();
+        String spaces ="";
+        while(cont<length)
+        {
+            spaces = spaces + " ";
+            cont++;
+        }
+        return spaces;
     }
 
     public String toCSVLine()
