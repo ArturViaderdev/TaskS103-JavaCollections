@@ -39,6 +39,11 @@ public class Restaurant implements Comparable<Restaurant> {
         return "Nom de restaurant: '" + name + ", puntuació=" + Integer.toString(score);
     }
 
+    /**
+     * Compare to order the restaurants firs by name and if the name is the same by score
+     * @param restaurant
+     * @return
+     */
     @Override
     public int compareTo(Restaurant restaurant) {
         int orden =  this.name.compareTo(restaurant.name);
