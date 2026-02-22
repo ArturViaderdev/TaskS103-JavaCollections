@@ -18,12 +18,19 @@ I explored the hashset with for each and with iterator.
 I create two integer lists and fill it with numbers. Later I add the contents from the first list to the second list using a listiterator.
 The List allows to have repeated numbers, and it maintains the order.
 
-## Exercise 3
+### Exercise 3
 
 This is a game that asks the user for countries and its capitals.
 The information is read from a text file and stored in a hashmap.
 The score is saved in another file.
 
 ## Level 2
+
+### Exercise 1
+I created a hashset that stores restaurants and I checked that hashset is not allowing to insert duplicates.
+
+### Exercise 2
+I used comparable to order objects of an arraylist.
+I am not used hashset because it not has a defined order.
 
 ## Level 3
