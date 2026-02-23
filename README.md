@@ -34,3 +34,8 @@ I used comparable to order objects of an arraylist.
 I am not used hashset because it not has a defined order.
 
 ## Level 3
+
+### Exercise 1
+
+I developed a program that stores persons in a csv file.
+The persons can be ordered by name, surnames and dni.
