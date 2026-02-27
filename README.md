@@ -1,5 +1,74 @@
 # Task S103 - Java Collections
 
+## Description
+This project was created for academic purposes as part of the IT Academy Java & Spring specialization.
+The goal is to test the inheritance and polymorphism behavior.
+
+The project is structured in three levels of increasing complexity.
+
+## 🛠 Technologies
+- Java
+
+##    Project Structure
+````bash
+├── pom.xml
+├── README.md
+└── src
+    └── main
+        └── java
+            ├── level1Exercise1
+            │   ├── Main.java
+            │   ├── Methods.java
+            │   └── Month.java
+            ├── level1Exercise2
+            │   ├── Main.java
+            │   └── Methods.java
+            ├── level1Exercise3
+            │   ├── ConsoleUI.java
+            │   ├── FilesInteraction.java
+            │   ├── Main.java
+            │   └── Program.java
+            ├── level2Exercise1
+            │   ├── Main.java
+            │   └── Restaurant.java
+            ├── level2Exercise2
+            │   ├── Main.java
+            │   └── Restaurant.java
+            └── level3Exercise1
+                ├── comparators
+                │   ├── ComparatorDNIAsc.java
+                │   ├── ComparatorNameAsc.java
+                │   └── ComparatorSurnamesAsc.java
+                ├── ConsoleUI.java
+                ├── exceptions
+                │   ├── CommaFieldException.java
+                │   ├── EmptyException.java
+                │   ├── IncorrectCSVFormatException.java
+                │   ├── IncorrectOptionException.java
+                │   └── MaxLengthException.java
+                ├── FilesAccess.java
+                ├── Main.java
+                ├── Person.java
+                └── Program.java
+````
+
+## 🚀 Instal.lation and Execution
+1. Clone the repository:
+````bash
+git clone https://github.com/ArturViaderdev/TaskS103-JavaCollections
+````
+You can do cd into the project folder you want to execute:
+Examples:
+````
+cd src/main/java/level1Exercise1
+cd src/main/java/level1Exercide2
+````
+
+And run the program:
+````
+java Main.java
+````
+
 ## Level 1
 
 ### Exercise 1
