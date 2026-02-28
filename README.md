@@ -2,7 +2,7 @@
 
 ## Description
 This project was created for academic purposes as part of the IT Academy Java & Spring specialization.
-The goal is to test the inheritance and polymorphism behavior.
+The goal is to test the Java Collections.
 
 The project is structured in three levels of increasing complexity.
 
