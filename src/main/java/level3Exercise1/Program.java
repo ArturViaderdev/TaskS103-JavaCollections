@@ -2,10 +2,10 @@ package level3Exercise1;
 import level3Exercise1.comparators.ComparatorDNIAsc;
 import level3Exercise1.comparators.ComparatorNameAsc;
 import level3Exercise1.comparators.ComparatorSurnamesAsc;
-import level3Exercise1.exceptions.CommaFieldException;
-import level3Exercise1.exceptions.EmptyException;
-import level3Exercise1.exceptions.MaxLengthException;
+import level3Exercise1.exceptions.*;
 
+import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.List;
 
 public class Program {
@@ -29,7 +29,12 @@ public class Program {
                 option = consoleUI.showMenu();
                 executeOption(option);
             }
-            catch(Exception ex)
+            catch(InputMismatchException ex)
+            {
+                consoleUI.consumeNextLine();
+                consoleUI.showIncorrectOption();
+            }
+            catch(IncorrectOptionException ex)
             {
                 consoleUI.showIncorrectOption();
             }
@@ -83,7 +88,8 @@ public class Program {
                     break;
             }
         }
-        catch(Exception ex){
+        catch(IOException | IncorrectCSVFormatException | EmptyException | CommaFieldException | MaxLengthException ex)
+        {
             System.out.println(ex.getMessage());
         }
     }
@@ -92,7 +98,8 @@ public class Program {
      * Insert a person
      * @throws Exception
      */
-    private void insertPerson() throws Exception {
+    private void insertPerson() throws EmptyException,CommaFieldException,MaxLengthException,IOException {
+        consoleUI.consumeNextLine();
         Person person = consoleUI.getPersonData();
         if(person.getName().isEmpty()||person.getSurnames().isEmpty()||person.getDni().isEmpty())
         {

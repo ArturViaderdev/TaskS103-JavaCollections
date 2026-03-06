@@ -13,7 +13,7 @@ public class FilesInteraction {
         this.classificationFilename = classificationFilename;
     }
 
-    public void readCountries(HashMap<String, String> data) throws Exception {
+    public void readCountries(HashMap<String, String> data) throws IOException {
         ClassLoader classLoader = getClass().getClassLoader();
         String path = classLoader.getResource(countriesFilename).getPath();
         File countriesFile = new File(path);

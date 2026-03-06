@@ -1,5 +1,6 @@
 package level1Exercise3;
 
+import java.io.IOException;
 import java.util.*;
 
 public class Program {
@@ -29,7 +30,7 @@ public class Program {
             playerName = consoleui.getPlayerName();
             game();
         }
-        catch(Exception ex)
+        catch(IOException ex)
         {
             consoleui.errorFile();
         }
@@ -62,7 +63,7 @@ public class Program {
         while(question<9)
         {
             String response = consoleui.showQuestion(questions.get(question), question+1);
-            if(response.toLowerCase().equals(data.get(questions.get(question)).toLowerCase()))
+            if(response.equalsIgnoreCase(data.get(questions.get(question))))
             {
                 points++;
                 consoleui.showSuccess();
@@ -80,7 +81,7 @@ public class Program {
             filesInteraction.writeScore(playerName,points);
             consoleui.showSavedScore();
         }
-        catch(Exception ex)
+        catch(IOException ex)
         {
             consoleui.errorFile();
         }

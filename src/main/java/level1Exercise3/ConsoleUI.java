@@ -6,6 +6,7 @@ import java.util.Scanner;
  * Class that manages the input and output by console
  */
 public class ConsoleUI {
+    private final Scanner scanner = new Scanner(System.in);
     public ConsoleUI()
     {
 
@@ -17,7 +18,6 @@ public class ConsoleUI {
      */
     public String getPlayerName()
     {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Introdueix el teu nom.");
         String name = scanner.nextLine();
         return name;
@@ -31,7 +31,6 @@ public class ConsoleUI {
      */
     public String showQuestion(String question, int numQuestion)
     {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Pregunta " + Integer.toString(numQuestion) + " Pais: " + question + " Introdueix la capital.");
         String response = scanner.nextLine();
         return response;

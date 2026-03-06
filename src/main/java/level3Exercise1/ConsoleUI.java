@@ -2,6 +2,7 @@ package level3Exercise1;
 
 import level3Exercise1.exceptions.IncorrectOptionException;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -9,9 +10,15 @@ import java.util.Scanner;
  * Class that interacts with the user by console
  */
 public class ConsoleUI {
+    private final Scanner scanner = new Scanner(System.in);
     public ConsoleUI()
     {
 
+    }
+
+    public void consumeNextLine()
+    {
+        scanner.nextLine();
     }
 
     /**
@@ -19,7 +26,7 @@ public class ConsoleUI {
      * @return The option selected by the user
      * @throws Exception Error
      */
-    public int showMenu() throws Exception
+    public int showMenu() throws IncorrectOptionException, InputMismatchException
     {
         System.out.println("1 - Introduir persona");
         System.out.println("2 - Mostrar persones ordenades per nom (A-Z)");
@@ -29,7 +36,6 @@ public class ConsoleUI {
         System.out.println("6 - Mostrar persones ordenades per DNI (1-9)");
         System.out.println("7 - Mostrar persones ordenades per DNI (9-1)");
         System.out.println("0 - Sortir");
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Introdueix una opció.");
         int opcio = scanner.nextInt();
         if(opcio>=0 && opcio<=7)
@@ -53,7 +59,6 @@ public class ConsoleUI {
      */
     public Person getPersonData()
     {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Introdueix el nom.");
         String name = scanner.nextLine();
         System.out.println("Introdueix els cognoms.");

@@ -48,7 +48,7 @@ public class FilesAccess {
      * @return List of persons
      * @throws Exception error
      */
-    public List<Person> readPersons() throws Exception {
+    public List<Person> readPersons() throws IOException,IncorrectCSVFormatException {
         File csvfile = new File(csvPath);
 
             FileReader reader = new FileReader(csvfile);
