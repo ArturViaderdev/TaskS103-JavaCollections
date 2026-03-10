@@ -68,6 +68,7 @@ And run the program:
 ````
 java Main.java
 ````
+Or run with IntelliJ IDEA.
 
 # Java Collections Exercises
 
