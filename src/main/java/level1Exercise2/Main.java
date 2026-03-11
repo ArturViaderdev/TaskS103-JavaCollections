@@ -12,12 +12,12 @@ public class Main {
 
         methods.fillList(list);
 
-        List<Integer> listB = new ArrayList<>();
+        List<Integer> reversedList = new ArrayList<>();
 
-        methods.copyReverseList(list,listB);
+        methods.copyReverseList(list,reversedList);
 
-        methods.addElementsToSecondList(list,listB);
+        //methods.addElementsToSecondList(list,reversedList);
 
-        methods.showIntegerList(listB);
+        methods.showIntegerList(reversedList);
     }
 }

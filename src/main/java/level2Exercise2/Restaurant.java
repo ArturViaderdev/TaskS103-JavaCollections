@@ -17,11 +17,6 @@ public class Restaurant implements Comparable<Restaurant> {
         return score;
     }
 
-    /**
-     * Equals method that is not allowing to have a two restaurants with the same name and score
-     * @param o
-     * @return
-     */
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -39,21 +34,16 @@ public class Restaurant implements Comparable<Restaurant> {
         return "Nom de restaurant: '" + name + ", puntuació=" + Integer.toString(score);
     }
 
-    /**
-     * Compare to order the restaurants firs by name and if the name is the same by score
-     * @param restaurant
-     * @return
-     */
     @Override
     public int compareTo(Restaurant restaurant) {
-        int orden =  this.name.compareTo(restaurant.name);
-        if(orden==0)
+        int order =  this.name.compareTo(restaurant.name);
+        if(order==0)
         {
-            return Integer.compare(this.getScore(), restaurant.getScore());
+            return Integer.compare(restaurant.getScore(),this.getScore());
         }
         else
         {
-            return orden;
+            return order;
         }
     }
 }

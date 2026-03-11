@@ -16,46 +16,29 @@ public class Methods {
         return methods;
     }
 
-    /**
-     * Fills a list with numbers
-     * @param list The list
-     */
     public void fillList(List<Integer> list){
 
-            for(int cont=1;cont<=20;cont++)
+            for(int counter=1;counter<=20;counter++)
             {
-                list.add(cont);
+                list.add(counter);
             }
     }
 
-    public void copyReverseList(List<Integer> list, List<Integer> listB)
+    public void copyReverseList(List<Integer> list, List<Integer> reversedList)
     {
         ListIterator iterator = list.listIterator(list.size());
         while(iterator.hasPrevious())
         {
-            listB.add((int) iterator.previous());
+            reversedList.add((int) iterator.previous());
         }
     }
 
-    /**
-     * Copies elements from one list to another one with listiterator.
-     * @param listA List a
-     * @param listB List b
-     */
-    public void addElementsToSecondList(List<Integer> listA, List<Integer> listB)
+    @Deprecated
+    public void addElementsToSecondList(List<Integer> list, List<Integer> secondList)
     {
-        //I create a ListIterator for the first List
-        ListIterator<Integer> listIterator = listA.listIterator();
-        while(listIterator.hasNext())
-        {
-            listB.add(listIterator.next());
-        }
+        secondList.addAll(list);
     }
 
-    /**
-     * Show integers list on console
-     * @param list The list
-     */
     public void showIntegerList(List<Integer> list)
     {
         ListIterator<Integer> listIterator = list.listIterator();

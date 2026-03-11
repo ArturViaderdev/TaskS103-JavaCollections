@@ -18,28 +18,26 @@ public class FilesInteraction {
         ClassLoader classLoader = getClass().getClassLoader();
         String path = Objects.requireNonNull(classLoader.getResource(countriesFilename)).getPath();
         File countriesFile = new File(path);
-        FileReader reader = new FileReader(countriesFile);
-        BufferedReader br = new BufferedReader(reader);
-        String read;
-        do {
-            read =br.readLine();
-            if(read !=null)
-            {
-                String[] line = read.split(",");
-                data.put(line[0],line[1]);
-            }
-        }while(read != null);
-
-        br.close();
-        reader.close();
+        try (FileReader reader = new FileReader(countriesFile);
+        BufferedReader br = new BufferedReader(reader))
+        {
+            String read;
+            do {
+                read =br.readLine();
+                if(read !=null)
+                {
+                    String[] line = read.split(",");
+                    data.put(line[0],line[1]);
+                }
+            }while(read != null);
+        }
     }
 
     public void writeScore(String playerName,int points) throws IOException {
-        FileWriter fw = new FileWriter(classificationFilename,true);
-        BufferedWriter bw = new BufferedWriter(fw);
-        bw.write(playerName + " " + Integer.toString(points));
-        bw.newLine();
-        bw.close();
-        fw.close();
+        try(FileWriter fw = new FileWriter(classificationFilename,true);
+            BufferedWriter bw = new BufferedWriter(fw)) {
+            bw.write(playerName + " " + Integer.toString(points));
+            bw.newLine();
+        }
     }
 }

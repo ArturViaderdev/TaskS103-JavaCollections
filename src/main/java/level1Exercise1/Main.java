@@ -25,7 +25,7 @@ public class Main {
         Methods methods = Methods.getInstance();
 
         System.out.println("Mostro el arraylist.");
-        methods.ShowMonths(months);
+        methods.showMonths(months);
 
         HashSet<Month> monthshashset = new HashSet<>();
 

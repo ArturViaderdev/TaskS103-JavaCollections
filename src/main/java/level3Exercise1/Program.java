@@ -17,9 +17,6 @@ public class Program {
         filesAccess = new FilesAccess("persones.csv");
     }
 
-    /**
-     * Start the app. Shows menu and execute option
-     */
     public void start()
     {
         int option=10;
@@ -41,10 +38,6 @@ public class Program {
         } while(option!=0);
     }
 
-    /**
-     * Execute options of the menu
-     * @param option
-     */
     private void executeOption(int option)
     {
         List<Person> persons;
@@ -78,6 +71,7 @@ public class Program {
                     break;
                 case 6:
                     persons = filesAccess.readPersons();
+                    persons.sort(new ComparatorDNIAsc());
                     consoleUI.showPersons(persons);
                     break;
                 case 7:
@@ -94,10 +88,6 @@ public class Program {
         }
     }
 
-    /**
-     * Insert a person
-     * @throws Exception
-     */
     private void insertPerson() throws EmptyException,CommaFieldException,MaxLengthException,IOException {
         consoleUI.consumeNextLine();
         Person person = consoleUI.getPersonData();

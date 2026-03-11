@@ -6,9 +6,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Class that read and write CSV file.
- */
 public class FilesAccess {
     String csvPath;
     public FilesAccess(String csvPath)
@@ -16,58 +13,56 @@ public class FilesAccess {
         this.csvPath = csvPath;
     }
 
-    /**
-     * Adds a person to the csv file
-     * @param person Person to add
-     * @throws IOException Exception
-     */
     public void addPerson(Person person) throws IOException {
         File csvfile = new File(csvPath);
-        FileWriter fw;
-        BufferedWriter bw;
+
+
         if(csvfile.exists() && csvfile.isFile())
         {
-            fw = new FileWriter(csvPath,true);
-            bw = new BufferedWriter(fw);
-            bw.newLine();
+            try(FileWriter fw = new FileWriter(csvPath,true);
+            BufferedWriter bw = new BufferedWriter(fw))
+            {
+                bw.newLine();
+                bw.write(person.toCSVLine());
+            }
+
         }
         else
         {
-            fw = new FileWriter(csvPath,false);
-            bw = new BufferedWriter(fw);
-            bw.write("\"Nom\",\"Cognoms\",\"Nif\"");
-            bw.newLine();
+            try(FileWriter fw = new FileWriter(csvPath,false);
+            BufferedWriter bw = new BufferedWriter(fw))
+            {
+                bw.write("\"Nom\",\"Cognoms\",\"Nif\"");
+                bw.newLine();
+                bw.write(person.toCSVLine());
+            }
         }
-        bw.write(person.toCSVLine());
-        bw.close();
-        fw.close();
     }
 
     public List<Person> readPersons() throws IOException,IncorrectCSVFormatException {
         File csvfile = new File(csvPath);
-
-            FileReader reader = new FileReader(csvfile);
-            BufferedReader br = new BufferedReader(reader);
-            String read;
-            read =br.readLine();
-            List<Person> persons = new ArrayList<>();
-            do {
+            try(FileReader reader = new FileReader(csvfile);
+                BufferedReader br = new BufferedReader(reader))
+            {
+                String read;
                 read =br.readLine();
-                if(read !=null)
-                {
-                    String[] dats = read.split(",");
-                    if(dats.length==3)
+                List<Person> persons = new ArrayList<>();
+                do {
+                    read =br.readLine();
+                    if(read !=null)
                     {
-                        persons.add(new Person(dats[0],dats[1],dats[2]));
+                        String[] data = read.split(",");
+                        if(data.length==3)
+                        {
+                            persons.add(new Person(data[0],data[1],data[2]));
+                        }
+                        else
+                        {
+                            throw new IncorrectCSVFormatException();
+                        }
                     }
-                    else
-                    {
-                        throw new IncorrectCSVFormatException();
-                    }
-                }
-            }while(read != null);
-            br.close();
-            reader.close();
-            return persons;
+                }while(read != null);
+                return persons;
+            }
     }
 }

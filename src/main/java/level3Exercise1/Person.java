@@ -40,12 +40,6 @@ public class Person {
         return name + nameSpaces +  " " + surnames + surnameSpaces + " " + dni;
     }
 
-    /**
-     * Generate the empty spaces for the console output columns used by toString
-     * @param text
-     * @param length
-     * @return
-     */
     private String generateSpaces(String text,int length)
     {
         int cont = text.length();

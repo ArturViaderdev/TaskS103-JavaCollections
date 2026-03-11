@@ -11,9 +11,6 @@ public class Program {
     private String playerName;
     int points;
 
-    /**
-     * Initialization of variables in the constructor
-     */
     public Program()
     {
         consoleui = new ConsoleUI();
@@ -36,9 +33,6 @@ public class Program {
         }
     }
 
-    /**
-     * Game
-     */
     private void game()
     {
         points = 0;
@@ -51,9 +45,9 @@ public class Program {
         Collections.shuffle(countries);
 
         //I copy the first 10 elements of shuffled keys array
-        for(int cont=0;cont<10;cont++)
+        for(int counter=0;counter<10;counter++)
         {
-            questions.add(countries.get(cont));
+            questions.add(countries.get(counter));
         }
         int question = 0;
         while(question<10)

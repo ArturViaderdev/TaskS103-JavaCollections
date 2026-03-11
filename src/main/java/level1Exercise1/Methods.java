@@ -17,7 +17,7 @@ public class Methods {
         return methods;
     }
 
-    public void ShowMonths(ArrayList<Month> months)
+    public void showMonths(ArrayList<Month> months)
     {
         for(Month month:months)
         {

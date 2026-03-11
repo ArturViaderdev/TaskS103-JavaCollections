@@ -6,9 +6,6 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- * Class that interacts with the user by console
- */
 public class ConsoleUI {
     private final Scanner scanner = new Scanner(System.in);
     public ConsoleUI()
@@ -48,10 +45,6 @@ public class ConsoleUI {
         System.out.println("Opció incorrecta.");
     }
 
-    /**
-     * The user introduces the data of a person
-     * @return The person introduced by the user
-     */
     public Person getPersonData()
     {
         System.out.println("Introdueix el nom.");
@@ -68,10 +61,6 @@ public class ConsoleUI {
         System.out.println("Persona afegida al csv.");
     }
 
-    /**
-     * Shows the list in the console
-     * @param persons List of persons
-     */
     public void showPersons(List<Person> persons)
     {
         System.out.println("___Nom____ ______Cognoms_______ ___DNI___");
