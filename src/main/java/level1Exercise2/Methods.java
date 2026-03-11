@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 public class Methods {
-    private static Methods methods = new Methods();
+    private static final Methods methods = new Methods();
 
     public Methods()
     {
@@ -19,22 +19,21 @@ public class Methods {
     /**
      * Fills a list with numbers
      * @param list The list
-     * @param order Ascendent or descendent
      */
-    public void fillList(List<Integer> list,boolean order){
-        if(order)
-        {
+    public void fillList(List<Integer> list){
+
             for(int cont=1;cont<=20;cont++)
             {
                 list.add(cont);
             }
-        }
-        else
+    }
+
+    public void copyReverseList(List<Integer> list, List<Integer> listB)
+    {
+        ListIterator iterator = list.listIterator(list.size());
+        while(iterator.hasPrevious())
         {
-            for(int cont=20;cont>=1;cont--)
-            {
-                list.add(cont);
-            }
+            listB.add((int) iterator.previous());
         }
     }
 
@@ -46,10 +45,10 @@ public class Methods {
     public void addElementsToSecondList(List<Integer> listA, List<Integer> listB)
     {
         //I create a ListIterator for the first List
-        ListIterator<Integer> listiterator = listA.listIterator();
-        while(listiterator.hasNext())
+        ListIterator<Integer> listIterator = listA.listIterator();
+        while(listIterator.hasNext())
         {
-            listB.add(listiterator.next());
+            listB.add(listIterator.next());
         }
     }
 
@@ -59,9 +58,10 @@ public class Methods {
      */
     public void showIntegerList(List<Integer> list)
     {
-        for(int cont=0;cont<list.size();cont++)
+        ListIterator<Integer> listIterator = list.listIterator();
+        while(listIterator.hasNext())
         {
-            System.out.println(list.get(cont).toString());
+            System.out.println(listIterator.next());
         }
     }
 }

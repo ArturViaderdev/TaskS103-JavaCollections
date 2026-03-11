@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 public class Methods {
-    private static Methods methods = new Methods();
+    private static final Methods methods = new Methods();
 
     public Methods()
     {

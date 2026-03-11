@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.util.*;
 
 public class Program {
-    private ConsoleUI consoleui;
+    private final ConsoleUI consoleui;
     private HashMap<String, String> data;
-    private FilesInteraction filesInteraction;
+    private final FilesInteraction filesInteraction;
     private ArrayList<String> questions;
     private String playerName;
     int points;
@@ -43,14 +43,10 @@ public class Program {
     {
         points = 0;
         ArrayList<String> countries;
-        countries = new ArrayList<>();
-        Iterator iterator = data.entrySet().iterator();
+
+
         //I copy all the countries or keys in an arraylist
-        while(iterator.hasNext())
-        {
-            Map.Entry element = (Map.Entry) iterator.next();
-            countries.add((String) element.getKey());
-        }
+        countries = new ArrayList<>(data.keySet());
         //I have to shuffle the array and get 10 elements.
         Collections.shuffle(countries);
 
@@ -60,7 +56,7 @@ public class Program {
             questions.add(countries.get(cont));
         }
         int question = 0;
-        while(question<9)
+        while(question<10)
         {
             String response = consoleui.showQuestion(questions.get(question), question+1);
             if(response.equalsIgnoreCase(data.get(questions.get(question))))

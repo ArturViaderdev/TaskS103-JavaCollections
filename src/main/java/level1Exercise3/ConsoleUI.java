@@ -19,8 +19,7 @@ public class ConsoleUI {
     public String getPlayerName()
     {
         System.out.println("Introdueix el teu nom.");
-        String name = scanner.nextLine();
-        return name;
+        return scanner.nextLine();
     }
 
     /**
@@ -32,8 +31,7 @@ public class ConsoleUI {
     public String showQuestion(String question, int numQuestion)
     {
         System.out.println("Pregunta " + Integer.toString(numQuestion) + " Pais: " + question + " Introdueix la capital.");
-        String response = scanner.nextLine();
-        return response;
+        return scanner.nextLine();
     }
 
     public void errorFile()
@@ -56,10 +54,6 @@ public class ConsoleUI {
         System.out.println("Has fallat, la resposta correcta és país: " + country + " capital: " + capital);
     }
 
-    /**
-     * End game
-     * @param points
-     */
     public void showEndGame(int points)
     {
         System.out.println("Has acabat el joc. La teva puntuació és de " + Integer.toString(points));

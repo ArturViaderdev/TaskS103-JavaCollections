@@ -3,7 +3,7 @@ package level2Exercise1;
 import java.util.Objects;
 
 public class Restaurant {
-    private String name;
+    private final String name;
     private int score;
 
     public Restaurant(String name, int score)
@@ -12,11 +12,6 @@ public class Restaurant {
         this.score = score;
     }
 
-    /**
-     * Equals method that is not allowing to have a two restaurants with the same name and score
-     * @param o
-     * @return
-     */
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

@@ -49,7 +49,7 @@ public class Restaurant implements Comparable<Restaurant> {
         int orden =  this.name.compareTo(restaurant.name);
         if(orden==0)
         {
-            return restaurant.getScore() - this.getScore();
+            return Integer.compare(this.getScore(), restaurant.getScore());
         }
         else
         {

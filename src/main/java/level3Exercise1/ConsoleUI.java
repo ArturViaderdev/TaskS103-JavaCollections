@@ -21,11 +21,6 @@ public class ConsoleUI {
         scanner.nextLine();
     }
 
-    /**
-     * Shows the menu and gets the option selected by the user
-     * @return The option selected by the user
-     * @throws Exception Error
-     */
     public int showMenu() throws IncorrectOptionException, InputMismatchException
     {
         System.out.println("1 - Introduir persona");
@@ -65,8 +60,7 @@ public class ConsoleUI {
         String surnames = scanner.nextLine();
         System.out.println("Introdueix el DNI.");
         String dni = scanner.nextLine();
-        Person person = new Person(name,surnames,dni);
-        return person;
+        return new Person(name,surnames,dni);
     }
 
     public void personAddedMessage()

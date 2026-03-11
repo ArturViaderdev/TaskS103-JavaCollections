@@ -10,11 +10,11 @@ public class Main {
 
         List<Integer> list = new ArrayList<>();
 
-        methods.fillList(list,true);
+        methods.fillList(list);
 
         List<Integer> listB = new ArrayList<>();
 
-        methods.fillList(listB,false);
+        methods.copyReverseList(list,listB);
 
         methods.addElementsToSecondList(list,listB);
 

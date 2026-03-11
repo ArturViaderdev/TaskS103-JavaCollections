@@ -43,24 +43,19 @@ public class FilesAccess {
         fw.close();
     }
 
-    /**
-     * Reads the persons from the csv file
-     * @return List of persons
-     * @throws Exception error
-     */
     public List<Person> readPersons() throws IOException,IncorrectCSVFormatException {
         File csvfile = new File(csvPath);
 
             FileReader reader = new FileReader(csvfile);
             BufferedReader br = new BufferedReader(reader);
-            String readed;
-            readed=br.readLine();
+            String read;
+            read =br.readLine();
             List<Person> persons = new ArrayList<>();
             do {
-                readed=br.readLine();
-                if(readed!=null)
+                read =br.readLine();
+                if(read !=null)
                 {
-                    String[] dats =readed.split(",");
+                    String[] dats = read.split(",");
                     if(dats.length==3)
                     {
                         persons.add(new Person(dats[0],dats[1],dats[2]));
@@ -70,7 +65,7 @@ public class FilesAccess {
                         throw new IncorrectCSVFormatException();
                     }
                 }
-            }while(readed != null);
+            }while(read != null);
             br.close();
             reader.close();
             return persons;

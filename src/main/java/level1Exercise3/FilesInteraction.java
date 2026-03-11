@@ -2,6 +2,7 @@ package level1Exercise3;
 
 import java.io.*;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class FilesInteraction {
     private String countriesFilename;
@@ -15,19 +16,19 @@ public class FilesInteraction {
 
     public void readCountries(HashMap<String, String> data) throws IOException {
         ClassLoader classLoader = getClass().getClassLoader();
-        String path = classLoader.getResource(countriesFilename).getPath();
+        String path = Objects.requireNonNull(classLoader.getResource(countriesFilename)).getPath();
         File countriesFile = new File(path);
         FileReader reader = new FileReader(countriesFile);
         BufferedReader br = new BufferedReader(reader);
-        String readed;
+        String read;
         do {
-            readed=br.readLine();
-            if(readed!=null)
+            read =br.readLine();
+            if(read !=null)
             {
-                String[] line =readed.split(" ");
+                String[] line = read.split(",");
                 data.put(line[0],line[1]);
             }
-        }while(readed != null);
+        }while(read != null);
 
         br.close();
         reader.close();
