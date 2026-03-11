@@ -34,7 +34,6 @@ public class Person {
     public String toString() {
         String nameSpaces="";
         String surnameSpaces="";
-        int cont;
         nameSpaces = generateSpaces(name,maxNamelength);
         surnameSpaces = generateSpaces(surnames,maxSurnamesLength);
         return name + nameSpaces +  " " + surnames + surnameSpaces + " " + dni;
