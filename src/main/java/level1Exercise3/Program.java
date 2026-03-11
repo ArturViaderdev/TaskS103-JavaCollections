@@ -38,13 +38,9 @@ public class Program {
         points = 0;
         ArrayList<String> countries;
 
-
-        //I copy all the countries or keys in an arraylist
         countries = new ArrayList<>(data.keySet());
-        //I have to shuffle the array and get 10 elements.
         Collections.shuffle(countries);
 
-        //I copy the first 10 elements of shuffled keys array
         for(int counter=0;counter<10;counter++)
         {
             questions.add(countries.get(counter));
